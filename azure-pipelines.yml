@@ -31,7 +31,7 @@ jobs:
       restart-Service docker
       docker info
       dir
-      & .\mvnw verify -Djpt.btf.provision=true
+      & .\mvnw verify -D"jpt.btf.provision=true"
     displayName: 'Run all-the-things!'
 #- job: macOS
 #  pool:
