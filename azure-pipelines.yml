@@ -6,20 +6,42 @@
 trigger:
 - master
 
-strategy:
-  matrix:
-    linux:
-      imageName: 'ubuntu-latest'
+#strategy:
+#  matrix:
+#    linux:
+#      imageName: 'ubuntu-latest'
 #    mac:
 #      imageName: 'macos-10.13'
-    windows:
-      imageName: 'windows-latest'
+#    windows:
+#      imageName: 'windows-latest'
 
 
-pool:
-  vmImage: '$(imageName)'
+#pool:
+#  vmImage: '$(imageName)'
 
-steps:
-- script: |
-    ./mvnw verify -Djpt.btf.provision=true
-  displayName: 'Run all-the-things!'
+jobs:
+- job: Windows
+  pool:
+    vmImage: 'windows-latest'
+  steps:
+  - script: |
+      dir
+      .\mvnw verify -Djpt.btf.provision=true
+    displayName: 'Run all-the-things!'
+#- job: macOS
+#  pool:
+#    vmImage: 'macOS-10.13'
+#  steps:
+#  - script: echo hello from macOS
+- job: Linux
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - script: |
+      ./mvnw verify -Djpt.btf.provision=true
+    displayName: 'Run all-the-things!'
+
+#steps:
+#- bash: |
+#    ./mvnw verify -Djpt.btf.provision=true
+#  displayName: 'Run all-the-things!'
