@@ -9,6 +9,7 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+steps:
 - script: |
     ./mvnw verify -Djpt.btf.provision=true
   displayName: 'Run all-the-things!'
