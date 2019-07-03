@@ -30,7 +30,7 @@ jobs:
       more c:\\Programdata\\docker\\config\\daemon.json
       restart-Service docker
       docker info
-      docker pull --platform=linux ubuntu:16:10
+      docker pull --platform=linux ubuntu:16.10
       dir
       & .\mvnw verify -D"jpt.btf.provision=true"
     displayName: 'Run all-the-things!'
