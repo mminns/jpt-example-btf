@@ -24,12 +24,14 @@ jobs:
   pool:
     vmImage: 'windows-latest'
   steps:
-  - pwsh:
-      $configfile = '{ "experimental":true }'; $configfile|Out-File -FilePath c:\\Programdata\\docker\\config\\daemon.json -Encoding ascii -Force; more c:\\Programdata\\docker\\config\\daemon.json
-      restart-Service docker |
+  - pwsh: |
+      $configfile = '{ "experimental":true }'
+      $configfile|Out-File -FilePath c:\\Programdata\\docker\\config\\daemon.json -Encoding ascii -Force 
+      more c:\\Programdata\\docker\\config\\daemon.json
+      restart-Service docker
       docker info
       dir
-      .\mvnw verify -Djpt.btf.provision=true
+      #.\mvnw verify -Djpt.btf.provision=true
     displayName: 'Run all-the-things!'
 #- job: macOS
 #  pool:
