@@ -24,7 +24,7 @@ jobs:
   pool:
     vmImage: 'windows-latest'
   steps:
-  - script:
+  - pwsh:
       $configfile =@"
       {
           "experimental":true
