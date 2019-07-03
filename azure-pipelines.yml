@@ -25,7 +25,7 @@ jobs:
     vmImage: 'windows-latest'
   steps:
   - pwsh:
-      $configfile = "{ 'experimental':true }"; $configfile|Out-File -FilePath c:\\Programdata\\docker\\config\\daemon.json -Encoding ascii -Force;
+      $configfile = '{ "experimental":true }'; $configfile|Out-File -FilePath c:\\Programdata\\docker\\config\\daemon.json -Encoding ascii -Force; more c:\\Programdata\\docker\\config\\daemon.json
       restart-Service docker |
       docker info
       dir
