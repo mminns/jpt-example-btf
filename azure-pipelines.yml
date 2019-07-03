@@ -24,7 +24,15 @@ jobs:
   pool:
     vmImage: 'windows-latest'
   steps:
-  - script: |
+  - script:
+      $configfile =@"
+      {
+          "experimental":true
+      }
+      "@
+      $configfile|Out-File -FilePath c:\\Programdata\\docker\\config\\daemon.json -Encoding ascii -Force
+      restart-Service docker |
+      docker info
       dir
       .\mvnw verify -Djpt.btf.provision=true
     displayName: 'Run all-the-things!'
